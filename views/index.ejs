@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Using fontawesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- main container -->
+    <div class="container">
+        <!-- heading for the app -->
+        <h1>
+            <i class="fas fa-tasks"></i>
+            TODO App
+        </h1>
+        <!-- Main div is divided into two portions first for the form and second to display the created todos -->
+        <!-- form for todo begins from here -->
+        <form action="/create-todo" method="POST">
+            <!-- In form we have three divs for description, Category-date and for the buttons respectively -->
+
+            <!-- Description div -->
+            <div id="desc-div">
+                <label for="description">DESCRIPTION</label>
+                <input class="input-box" type="text" id="description" name="description" placeholder="What you want to do today?" required>
+            </div>
+
+            <!-- Category and Date div -->
+            <!-- The following div contains two divs one for Choosing the category and second for selecting the date -->
+            
+            <div id="catAndDate-div">
+                <!-- Used Flex property in CSS to display them in row-->
+                <!-- category div -->
+                <div class="cat-div">
+                    <label for="category">CATEGORY</label>
+                    <select name="category" id="category" required>
+                        <option value="Other" selected>Choose a category</option>
+                        <% for (var i =0; i < categories.length ; i++){ %>
+                        
+                        <option value="<%= categories[i] %>"><%= categories[i] %>
+                        <%}%>
+                      </select>
+                </div>
+
+                <!-- Selecting date div -->
+                <div class="date-div">
+                    <label for="date">DUE DATE</label>
+                    <input class="input-box" type="date" id="date" name="date" required>
+                </div>
+            </div>
+
+            <!-- buttons div contains a 'Add todo' button and a Div with an anchor tag styled as a button to send an 'Detete todo request' to the server -->
+            <div class="btns-div">
+                <button type="submit">
+                    <i class="fas fa-plus pr"></i>
+                    ADD TASK</button>
+
+                <div class="delete-button">
+                    <a id="deleteButtonLink" href="/delete-todo">
+                        <i class="fas fa-trash pr"></i> DELETE TASK
+                    </a>
+                </div>
+            </div>
+        </form>
+        
+        <!-- following section contains a div to display the created todo fetched from DB with the help of EJS -->
+        <!-- following logic determines if the todo length is zero the this div will not be visible -->
+        <% if (todo) { %>
+            <% for (var i =0; i < todo.length ; i++){ %>
+                <hr>
+        <!-- main div for displaying the results and is divided in to two parts left and right. left for the checkbox which will help us to delete the todo , todo Description and Date | Right div contains Catogory and Mark as Done Button to mark the todo completed.-->
+
+        <div class="results">
+            <div class="result-left">
+                <div id="checkbox">
+                    <!-- checkbox - which checking the checkbox, a function will trigger which will capture the id of the todo which is used to peroform all the major operation in DB.  -->
+                    <input  type="checkbox" class="checkboxValue" name="checkboxValue" value="<%= todo[i]._id %>" onchange="getId(this.value)">
+                </div>
+                <!-- TODO Description  and date | used flex-column property-->
+                <div id="info">
+                    <h3 class="toDoHeading"><%= todo[i].description %> </h3>
+                    <p>
+                        <i class="fas fa-calendar-alt pr custom"></i> 
+                        <%= todo[i].date %>
+                    </p>
+                </div>
+            </div>
+            <!-- category style div to display 'category' in a style and to display the 'mark as done button' if the todo is not marked as done OR to display the text if a todo is marked as done then hide the button and display the text 'Marked as done'.-->
+            <div class="cat-style-div">
+                <!-- Choosed category name -->
+                <p><%= todo[i].category %></p>
+                <!-- mark as done button will trigger a function onClick and send the id to main.js to send a PUT (Update request to server)-->
+                <button class="markedAsDone" value="<%= todo[i].is_marked_done %>" onclick="markAsDone('<%= todo[i].id %>')">
+                    <i class="fas fa-check"></i>
+                    Mark as Done
+                </button> 
+                <!-- Marked as text only appears if the todo is marked as done. -->
+                <% if (todo[i].is_marked_done == 'true') { %>
+                <p>
+                    <i class="fas fa-check"></i>
+                    Marked as done.
+                </p>
+                <% } %>
+            </div>
+        </div><% } %>
+        <% } %>
+    </div>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>

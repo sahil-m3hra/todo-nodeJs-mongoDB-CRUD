@@ -1,0 +1,183 @@
+/* Using Ubuntu font */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+body{
+    background-color: rgb(149, 147, 147);
+    font-family: 'Ubuntu', sans-serif;
+    margin: 0px;
+}
+h1{
+    padding-top: 25px;
+    text-align: center;
+}
+.container{
+    background-color: #fff;
+    width: 60%;
+    margin: auto;
+    border-radius: 8px;
+}
+label{
+    font-size: 14px;
+    font-weight: bold;
+}
+#desc-div{
+    display: flex;
+    flex-direction: column;
+    justify-content:  start;
+    padding: 15px 20px 25px 20px;
+    border-top: 1px solid rgb(187, 181, 181);
+    border-bottom: 1px solid rgb(187, 181, 181);
+}
+
+.input-box,select{
+    border: none;
+    width: 98%;
+    font-size: 18px;
+    color: rgb(118, 118, 118);
+}
+
+input:focus,select:focus{
+    outline-style: none;
+}
+
+#catAndDate-div{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid rgb(187, 181, 181);
+}
+
+.cat-div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:  start;
+    padding: 15px 20px 25px 20px;
+}
+.date-div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:  start;
+    border-left: 1px solid rgb(187, 181, 181);
+    padding: 15px 20px 25px 20px;
+}
+
+.btns-div{
+    text-align: center;
+    padding: 30px;
+}
+
+button {
+    padding: 18px;
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 1px;
+    border-radius: 10px;
+}
+
+button:hover, a:hover, .delete-button:hover{
+    cursor: pointer;
+}
+button[type = 'submit']{
+    width: 10.2rem;
+    background-color: rgb(48, 45, 45);
+    border: 1px solid rgb(48, 45, 45);
+    
+
+}
+
+.delete-button {
+    display: inline-block;
+    width: auto;
+    padding: 18px;
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 1px;
+    background-color: #DC3535;
+    border: 1px solid #DC3535;
+    border-radius: 10px;
+
+}
+a{
+    width: auto;
+    text-decoration: none;
+    color: #fff;
+}
+
+
+.pr{
+    padding-right: 3px;
+}
+
+hr{
+    width: 95%;
+    background-color: rgb(48, 45, 45);
+}
+
+.results{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 20px 20px 20px;
+}
+
+.result-left{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+}
+
+#checkbox{
+    padding-right: 10px;
+}
+
+#info{
+    display: flex;
+    flex-direction: column;
+}
+
+h3{
+    display: inline-block;
+    margin: 0px;
+    color: rgb(118, 118, 118);
+}
+
+p{
+    margin: 0;
+    padding-top: 5px;
+    color: rgb(118, 118, 118);
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.custom{
+    font-size: 22px
+}
+
+.cat-style-div{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    height: auto;
+    width: auto;
+}
+
+.cat-style-div p{
+
+    padding: 15px 30px;
+    color: #000;
+    font-size: 16px;
+    letter-spacing: 1px;
+    border-radius : 28px;
+}
+
+.cat-style-div button {
+    width: 100%;
+    padding: 18px;
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 1px;
+    background-color: #DC3535;
+    border: 1px solid #DC3535;
+    border-radius: 10px;
+    margin-left: 8px;
+} 
